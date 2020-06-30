@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"
+    content="width=device-width,
+    user-scalable=no"/>
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+    <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<!-- <div id="console"></div> -->
+<!-- Add an image that we will use to test -->
+<!-- <img id="img" crossorigin src="https://thumbs.dreamstime.com/b/empty-dented-crushed-can-chisinau-moldova-august-coca-cola-white-background-77318813.jpg" width="227" height="227"/> -->
+<!-- <video autoplay playsinline muted id="webcam" width="224" height="224"></video> -->
+<!-- <button id="class-a">Add A</button>
+<button id="class-b">Add B</button>
+<button id="class-c">Add C</button>
+<button id="save_button">Save</button> -->
+<!--<button id="load_button">Load</button>-->
+<!-- <input id="load_button" type='file' accept='.json'> -->
+<!-- <img id='output'> -->
+<!-- Load index.js after the content of the page -->
+<!-- <div id="div_loader">
+        <label class="div_loader_label1">App is getting ready...</label>
+        <label class="div_loader_label2">Downloading some libraries...</label>
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+
+<div id="superContainer">
+    <!-- <div class="progress" id="loader">
+      <div class="indeterminate"></div>
+    </div> -->
+
+    <div id="div_loader">
+    <label class="div_loader_label1">App is getting ready...</label>
+    <label class="div_loader_label2">Downloading some libraries...</label>
+    <div class="preloader-wrapper big active" style="margin:15px">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <video autoplay playsinline muted id="webcam" width="224" height="224"></video> -->
+
+    <div id="div_image" class="scale-transition scale-in">
+      <img id='output'>
+      
+      <!-- <div id="detection_webcam">
+        <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+        <canvas id="canvas"></canvas>
+    </div> -->
+      <label id="image_detect_result" class="scale-transition scale-out"></label>
+      <a class="waves-effect waves-orange btn scale-transition scale-out" id="btn_detect">Detect</a>
+    </div>
+    
+    <div class="container" id="detection_webcam_container">
+      <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+      <canvas id="canvas"></canvas>
+      <!-- <canvas id="result_canvas"></canvas> -->
+      <label id="result_label"></label>
+    </div>
+
+    <div id="div_training" class="scale-transition scale-out">
+      <label class="div_training_11">Train the Model</label>
+      <div class="div_training_12">
+          <img id='training_img'>
+      </div>
+      <div class="container" id="training_webcam_container">
+        <video autoplay playsinline muted id="training_webcam" width="224" height="224"></video>
+        <canvas id="training_canvas"></canvas>
+      </div>
+      <label class="div_training_13">Which category does it belong to?</label>
+      <div class="div_training_14">
+        <!-- <a class="btn btn-success" id="btn_dry_waste"><h10>Dry Waste</h10></a> -->
+        <!-- <a class="waves-effect waves-orange btn" id="btn_wet_waste">Wet Waste</a>
+        <a class="waves-effect waves-orange btn" id="btn_not_waste">Not a Waste</a> -->
+        <!-- <button type="button" class="btn btn-success" id="btn_wet_waste">Wet Waste</button> -->
+        <!-- <button type="button" class="btn btn-primary" id="btn_dry_waste">Dry Waste</button>        
+        <button type="button" class="btn btn-warning" id="btn_not_waste">Not a Waste</button>      </div> -->
+        <button type="button" id="btn_wet_waste" style="background-color: darkgreen; color: white">Wet Waste</button>
+        <button type="button" id="btn_dry_waste" style="background-color: mediumblue; color: white">Dry Waste</button>
+        <button type="button" id="btn_not_waste" style="background-color: darkgoldenrod; color: white">Not a Waste</button>
+    </div>
+    <!-- <a class="waves-effect waves-orange btn" id="btn_ok_training">OK with Training</a> -->
+    </div>
+
+    <!-- <div id="container">
+        <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+        <canvas id="canvas"></canvas>
+    </div> -->
+
+    <!-- <a class="waves-effect waves-orange btn-large scale-transition scale-in" id="btn_footer">Start</a> -->
+    
+     <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Camera Selection</h4>
+      <p>Select Camera which you want to select from given options and then click OK</p>
+  <select class="browser-default" id="select">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="Front">Front</option>
+    <option value="Rear">Rear</option>
+  </select>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="cam_select_ok_btn">OK</a>
+    </div>
+  </div>
+
+
+    <div id="div_middle" class="scale-transition scale-out">
+      <label class="div_middle_11">How do you want to start?</label>
+      <div class="div_middle_12">
+        <label for="load_button" class="waves-effect waves-yellow btn-large">Use Existing Model</label>
+        <input id="load_button" style="display:none;" type="file" >
+        <!-- <button class="waves-effect waves-yellow btn-large">Use Existing Model</button> -->
+        <a class="waves-effect waves-yellow btn-large" id="create_button">Create New Model</a>
+      </div>
+    </div>
+
+    <div id="div_footer" class="scale-transition scale-out">
+      <!-- <label class="div_footer_11">How do you want to start?</label> -->
+      <a  class="waves-effect waves-yellow btn-large scale-transition scale-in" id="btn_training">Start Training</a>
+      <!-- <a class="waves-effect waves-yellow btn-large scale-transition scale-out" id="btn_end_training">End Training</a> -->
+      <div class="scale-transition scale-out" id="div_footer_training">
+        <a class="waves-effect waves-yellow btn-large" id="btn_end_training">End Training</a>
+        <a class="waves-effect waves-yellow btn-large" id="btn_save_model">Save Model</a>
+      </div>
+      <div class="div_footer_12">
+        <!-- <a class="waves-effect waves-yellow btn-large" id="upload_image">Upload Image</a> -->
+        <label for="upload_image" class="waves-effect waves-yellow btn-large">Upload Image</label>
+        <input id="upload_image" style="display:none;" type="file" accept='image/*'>
+
+        <a class="waves-effect waves-yellow btn-large" href="#modal1" id="use_camera">Use Camera</a>
+
+      </div>
+    </div>
+
+    <!-- <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Face Recognizer</h4>
+        <p>Face Recognition System is going to start. Please, be still and look at the Camera. It will just take few seconds.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" id="disagree_btn"class="modal-close waves-effect waves-green btn-flat">Disagree</a>
+        <a href="#!" id="agree_btn"class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+
+    <div id="container1"></div> -->
+
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>

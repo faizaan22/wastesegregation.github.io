@@ -1,0 +1,416 @@
+.page-container {
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 20px;
+    padding-left: 280px;
+    display: inline-flex !important;
+  }
+  
+  /* @media only screen and (max-width : 992px) {
+    .page-container {
+      padding-left: 0;
+      display: flex !important;
+    }
+  } */
+  #superContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  #sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+  }
+  #container1 {
+    position: fixed;
+    display: flex;
+    top:20%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  /* #inputVideo1, #webcam {
+    position: fixed;
+    z-index: -1;
+  } */
+  #canvas1 {
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90vw;
+    height: 110vw;
+    transform: translate(5vw, 0vw);
+  }
+  
+  #training_canvas {
+    position: fixed;
+    top: 14vw;
+    left: 0;
+    width: 90vw;
+    height: 95vw;
+    transform: translate(5vw, 0vw);
+  }
+  /* #result_canvas {
+    position: fixed;
+    top: 110vw;
+    left: 0;
+    width: 90vw;
+    height: 20vw;
+    transform: translate(5vw, 0vw);
+  } */
+  #training_webcam_container {
+    width:90vw;
+    height: 95vw;
+  }
+  #detection_webcam_container label {
+    position: fixed;
+    top: 110vw;
+    left: 0;
+    width: 90vw;
+    height: 20vw;
+    font-size: 25px;
+    color: black;
+    background-color: #eb8934;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transform: translate(5vw, 0vw);
+  }
+  #div_image label {
+    font-size: 25px;
+    color: black;
+    /* background-color: #eb8934; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  #btn_footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #div_loader {
+    display: flex;
+    /* grid-row-gap:5px; */
+    position: fixed;
+    flex-direction: column;
+    transform: translate(0%, -50%);
+    top: 50%;
+    /* left: 50%; */
+    
+    /* left: 50%; */
+    /* width: 100vw;
+    font-size: 10px;*/
+    justify-content: center;
+    align-items: center;
+    /* grid-column-gap:10px; */
+  }
+  
+  .div_loader_label1 {
+    font-size: 24px;
+    margin:5px
+  }
+  
+  .div_loader_label2 {
+    font-size: 14px;
+    margin:5px
+  }
+  
+  /* #div_footer {
+    display: grid;
+    grid-row-gap:5px;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
+  } */
+  #div_middle {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    transform: translate(0%, -50%);
+    top: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #div_image {
+    /* display: flex; */
+    display: grid;
+    position: fixed;
+    /* flex-direction: column; */
+    /* transform: translate(0%, -50%);
+    top: 50%; */
+    top:2%;
+    justify-content: center;
+    align-items: center;
+    /* grid-template-rows: auto auto; */
+    /* grid-row-gap:20px; */
+    /* width: 100vw;
+    height: 95vw; */
+  }
+  #div_image * {
+    margin:20px;
+  }
+  #div_image img {
+    width: 90vw;
+    /* height: 90vw; */
+    max-height: 95vw;
+  }
+  /* #div_image canvas {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  } */
+  /* #webcam {
+    width: 90vw;
+    max-height: 95vw;
+  } */
+  .div_middle_11 {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    width: 80vw;
+    /* width:80%; */
+    height: 20vw;
+    background-color: #c1d648;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    margin:20px;
+    border-radius: 10px;
+  }
+  .div_middle_12 {
+    /* width: 100vw; */
+    width:70vw;
+    align-content: center;
+    display: grid;
+    /* grid-template-columns: auto auto; */
+    grid-template-rows: auto auto;
+    grid-row-gap:5px;
+  }
+  .div_middle_12 * {
+    border-radius: 10px;
+  }
+  
+  #div_footer {
+    display: grid;
+    grid-row-gap:20px;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #btn_training {
+    width:70%;
+    margin:auto;
+    border-radius: 10px;
+  }
+  
+  /* .div_footer_11 {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    width: 80vw;
+    height: 20vw;
+    background-color: #c1d648;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    margin:20px;
+    border-radius: 10px;
+  } */
+  .div_footer_12 {
+    width: 100vw;
+    align-content: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap:5px;
+  }
+  /* #div_footer_yes {
+    height:px
+  } */
+  
+  #div_training {
+    display: grid;
+    grid-row-gap:5px;
+    position: fixed;
+    top:0;
+    width: 100vw;
+    /* width: 70vw; */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .div_training_12 {
+    display: flex;
+    width:90vw;
+    margin:auto;
+    height: 95vw;
+    /* border-width: 5px;
+    border-color: black; */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .div_training_12 img {
+    width: 100%;
+    max-height: 100%;
+  }
+  .div_training_11, .div_training_13 {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100vw;
+    /* width:80%; */
+    height: 13vw;
+    background-color: #c1d648;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  .div_training_14 {
+    /* width: 100vw; */
+    align-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap:5px;
+  }
+  
+  #div_footer_training {
+    width: 100vw;
+    align-content: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap:5px;
+  }
+  /* #btn_ok_training {
+    bottom: 0;
+    position: fixed;
+  } */
+  
+  #navbar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .side-by-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .side-by-side >* {
+    margin: 0 5px;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .margin-sm {
+    margin: 5px;
+  }
+  
+  .margin {
+    margin: 20px;
+  }
+  
+  .button-sm {
+    padding: 0 10px !important;
+  }
+  
+  .pad-sides-sm {
+    padding: 0 8px !important;
+  }
+  
+  #github-link {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+  }
+  
+  /* #overlay, .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  #canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  } */
+  html, body {
+    height: 100%;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    width: 100%;
+  }
+  /* #inputVideo {
+    display: none;
+  } */
+  
+  /* #container, #detection_webcam {
+    width: 100%;
+    height: 100%;
+  } */
+  
+  /* canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  #canvas, #overlay {
+  width: 100%;
+  height: 100%;
+  } */
+  
+  /* .container {
+    display: flex;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+  } */
+  #modal1 {
+    z-index: 100;
+  }
+  
+  /* #facesContainer canvas {
+    margin: 10px;
+  } */
